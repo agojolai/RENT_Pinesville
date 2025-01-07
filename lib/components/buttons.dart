@@ -35,14 +35,24 @@ class _LoginButtonState extends State<LoginButton> {
   }
 }
 
-class newAccButton extends StatelessWidget {
+class newAccButton extends StatefulWidget {
+  void Function()? onTap;
 
-  newAccButton({super.key
-  });
+  newAccButton({
+    super.key,required this.onTap});
 
   @override
+  State<newAccButton> createState() => _newAccButtonState();
+}
+
+class _newAccButtonState extends State<newAccButton> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/create_account');
+        },
+    child: Container(
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Color(0xFF006989),
@@ -58,6 +68,7 @@ class newAccButton extends StatelessWidget {
         ),
         ),
       ),
+    ),
     );
   }
 }

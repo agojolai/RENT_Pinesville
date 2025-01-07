@@ -10,6 +10,7 @@ class LoginPage extends StatelessWidget {
   final passwordController = TextEditingController();
 
   void logUserIn(){}
+  void CreateAcc(){}
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +90,11 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(width:15),
 
                               //create button
-                  newAccButton(),
+                  newAccButton(
+                    onTap: CreateAcc,
+                  ),
+
+                  //button
                 ],
               ),
 

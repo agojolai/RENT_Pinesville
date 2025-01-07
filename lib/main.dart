@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/pages/create_account.dart';
 import 'package:untitled/pages/grp_page.dart';
 import 'package:untitled/pages/login_page.dart';
 import 'package:untitled/pages/home_page.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       home: LoginPage(),
       routes: {
     '/login_page': (context) => LoginPage(),
+    '/create_account': (context) => CreateAccPage(),
     '/grp_page': (context) => GrpPage(),
     '/home_page': (context) => HomePage(),
     '/announcements_page': (context) => AnnouncementsPage(),
