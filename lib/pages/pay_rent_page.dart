@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//!!!NAME TO BE CHANGED!!!!!
 class PayRentPage extends StatelessWidget {
   const PayRentPage({super.key});
 
@@ -31,9 +32,9 @@ class PayRentPage extends StatelessWidget {
                           'Hello',
                         ),
                         Text(
-                          'Hello again',
+                          'COMING SOON',
                         ),
-                        Text('hello againffffffffffssssssssssssssssssssffffff'),
+                        Text('!!!NAME TO BE CHANGED!!!!!'),
                       ],
                     )
                   ],
