@@ -24,6 +24,7 @@ class SignUpScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Poppins'
               ),),
+              SizedBox(height: 16),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'First Name',
@@ -122,6 +123,7 @@ class SignUpScreen extends StatelessWidget {
 
               SizedBox(height: 20),
               ElevatedButton(
+
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Process data.
@@ -129,7 +131,13 @@ class SignUpScreen extends StatelessWidget {
                         SnackBar(content: Text('Processing Data')));
                   }
                 },
-                child: Text('Sign Up'),
+
+                child: Text('Sign Up',
+                style: TextStyle(
+                  color: Color(0xFF006989),
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),),
               ),
             ],
           ),
