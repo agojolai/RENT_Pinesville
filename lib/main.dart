@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       home: LoginPage(),
       routes: {
     '/login_page': (context) => LoginPage(),
-    '/create_account': (context) => CreateAccPage(),
+    '/create_account': (context) => SignUpScreen(),
     '/grp_page': (context) => GrpPage(),
     '/home_page': (context) => HomePage(),
     '/announcements_page': (context) => AnnouncementsPage(),
