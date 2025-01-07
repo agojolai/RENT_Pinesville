@@ -54,16 +54,7 @@ class TransHistoryPage extends StatelessWidget {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                     //        primary: Colors.white,
-                    //
-                            //
-                            //
-                            //
-                            //
-                            //
-                            //
-                            //
-                            //
-                            //
+
                             //        onPrimary: Colors.blue[800],
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
