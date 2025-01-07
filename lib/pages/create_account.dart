@@ -6,40 +6,54 @@ class CreateAccPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar(title: const Text(
-          'Pay Rent',
-          style: TextStyle(
-            fontSize: 12,
-            fontFamily: 'Poppins',
-            color: Color(0xFF939393),
-          )
-      ),
-        centerTitle: true,
-      ),
-      body: const SafeArea(
+    return const Scaffold(
+      body: SafeArea(
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: 14),
-                child: Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Hello',
-                        ),
-                        Text(
-                          'Hello again',
-                        ),
-                        Text('hello again'),
-                      ],
-                    )
-                  ],
-                ),
+              SizedBox(height: 5),
 
+            //new acc text
+              Text(
+                  'New Account',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF939393),
+
+                  ),
+                 // textAlign: TextAlign.center,
+              ),
+
+            //name text
+              Text("Name",
+              style: TextStyle(
+                fontSize: 14,
+                fontFamily: 'Poppins'
               )
+              ),
+            //textfield name
+
+            //email text
+
+            //textfield email
+
+            //password text
+
+            //textfield password
+
+            //contact number text
+
+            //txtfield contact no
+
+            //unit no text NAKA ROW
+
+            //txtfield unit no.
+
+            //move in date text
+
+
+            //textfield or calendar txtfield
 
             ],
           )
