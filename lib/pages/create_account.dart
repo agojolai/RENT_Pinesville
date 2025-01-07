@@ -12,14 +12,13 @@ class SignUpScreen extends StatelessWidget {
         title: Text('Sign Up'),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Form(
           key: _formKey,
           child: Column(
             children: [
               const SizedBox(height: 60),
-
-              const Text("Lets Create your Account",
+              const Text("Lets Create your Account!",
               style: TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.bold,
@@ -29,6 +28,11 @@ class SignUpScreen extends StatelessWidget {
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'First Name',
+                    labelStyle: TextStyle(
+                      color: Color(0xFF939393),
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                    ),
                   prefixIcon: Icon(Icons.person),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -47,6 +51,11 @@ class SignUpScreen extends StatelessWidget {
               TextFormField(
                 decoration: InputDecoration(
                     labelText: 'Last Name',
+                    labelStyle: TextStyle(
+                      color: Color(0xFF939393),
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                    ),
                     prefixIcon: Icon(Icons.person),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -65,6 +74,11 @@ class SignUpScreen extends StatelessWidget {
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Email',
+                    labelStyle: TextStyle(
+                      color: Color(0xFF939393),
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                    ),
                   prefixIcon: Icon(Icons.email),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -82,9 +96,15 @@ class SignUpScreen extends StatelessWidget {
               ),
 
               SizedBox(height: 16),
+
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Phone Number',
+                  labelStyle: TextStyle(
+                  color: Color(0xFF939393),
+                  fontFamily: 'Poppins',
+                  fontSize: 16,
+                ),
                   prefixIcon: Icon(Icons.phone),
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
@@ -106,6 +126,11 @@ class SignUpScreen extends StatelessWidget {
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Password',
+                    labelStyle: TextStyle(
+                      color: Color(0xFF939393),
+                      fontFamily: 'Poppins',
+                      fontSize: 16,
+                    ),
                   prefixIcon: Icon(Icons.lock),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -140,9 +165,22 @@ class SignUpScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+
+                  //unit no.
+
+                  //move in date
+
+                ],
+
+              )
             ],
+
           ),
         ),
+
       ),
     );
   }
