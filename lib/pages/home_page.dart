@@ -150,7 +150,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   //photos
                   ClipRRect(
@@ -167,7 +167,7 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 16.0),
 
                   //announcement
-                  Text(
+                  const Text(
                     'Announcement',
                     style: TextStyle(
                         color: Colors.black,
@@ -199,9 +199,10 @@ class HomePage extends StatelessWidget {
                             SizedBox(width: 8.0),
                             Text(
                               'No Latest Announcements',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                color: Color(0xFF006989),
+                               style: TextStyle(
+                                 fontFamily: 'Poppins',
+                                 fontSize: 14,
+                                 color: Color(0xFF006989),
                               ),
                             ),
                           ],
@@ -210,10 +211,10 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
 
                   // Explore Tools Section
-                  Text(
+                  const Text(
                     'Explore Tools',
                     style: TextStyle(
                       color: Colors.black,
@@ -221,15 +222,15 @@ class HomePage extends StatelessWidget {
                       fontSize: 18,
                       fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 4.0),
-                  Text(
+                  const SizedBox(height: 4.0),
+                  const Text(
                     'Making everything from rent to maintenance requests easier',
                     style: TextStyle(
                       color: Colors.black,
                       fontFamily: 'Poppins',
                       fontSize: 14),
                   ),
-                  SizedBox(height: 5.0),
+                  const SizedBox(height: 5.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -271,11 +272,11 @@ class HomePage extends StatelessWidget {
       child: Column(
         children: [
           Icon(icon, color: Color(0xFF006989), size: 32.0),
-          SizedBox(height: 4.0),
+          const SizedBox(height: 4.0),
           Text(
             label,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontFamily: 'Poppins',
               fontSize: 9,),
