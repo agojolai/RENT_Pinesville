@@ -19,23 +19,26 @@ class HomePage extends StatelessWidget {
       drawer: Drawer(),
       //body
       body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Column(
           children: [
             const SizedBox(height: 25), // some space
-            Center(
+            Container(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Main teal container with text
                   Container(
                     //padding: const EdgeInsets.only(left: 16),
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    height: 250.0,
+                    //margin: const EdgeInsets.symmetric(horizontal: 20),
+
+                    height: 226, // height of teal container
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: const Color(0xFF006989),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: Colors.grey.withValues(alpha: 0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(0, 3),
@@ -85,7 +88,7 @@ class HomePage extends StatelessWidget {
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
+                                  color: Colors.grey.withValues(alpha: 0.5),
                                   //spreadRadius: 2,
                                   blurRadius: 2,
                                 ),
@@ -108,7 +111,7 @@ class HomePage extends StatelessWidget {
                                     ),
                                   ),
                                   child: const Text(
-                                    'Transaction History',
+                                    'Submit Bills',
                                     style: TextStyle(
                                       color: Color(0xFF006989),
                                       fontFamily: 'Montserrat',
@@ -132,7 +135,7 @@ class HomePage extends StatelessWidget {
                                     ),
                                   ),
                                   child: const Text(
-                                    'Pay Rent',
+                                    'View Billing Statement',
                                     style: TextStyle(
                                       color: Color(0xFF006989),
                                       fontFamily: 'Montserrat',
@@ -147,22 +150,104 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  SizedBox(height: 20),
+
+                  //photos
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12.0),
+                    child: Image.asset(
+                      'lib/images/IMG.jpg', // Replace with actual image URL
+                      height: 150.0,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+
+                    ),
+                  ),
+
+                  SizedBox(height: 16.0),
+
+                  //announcement
+                  Text(
+                    'Announcement',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Poppins',
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 4.0),
+
+                  Container(
+                    //padding: const EdgeInsets.all(40.0),
+                    height: 100,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: const Color(0xFF006989)),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start, // Added here
+                      children: [
+                        SizedBox(height: 16.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center, //to center
+                          children: [
+                            Icon(
+                              Icons.person_outline,
+                              color: Color(0xFF006989),
+                              size: 48.0,
+                            ),
+                            SizedBox(width: 8.0),
+                            Text(
+                              'No Latest Announcements',
+                              style: TextStyle(
+                                fontSize: 14.0,
+                                color: Color(0xFF006989),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(height: 16.0),
+
+                  // Explore Tools Section
+                  Text(
+                    'Explore Tools',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 4.0),
+                  Text(
+                    'Making everything from rent to maintenance requests easier',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Poppins',
+                      fontSize: 14),
+                  ),
+                  SizedBox(height: 5.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Image.asset(
-                        'lib/images/IMG.jpg',
-                        height: 300,
-                      ),
-                      Text('Announcements',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Montserrat',
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ))
+                      _buildToolIcon(Icons.description, 'View\nBills', () {
+                        print('Bill Break Down tapped');
+                      }),
+                      _buildToolIcon(Icons.history, 'Transaction\nHistory', () {
+                        print('Transaction History tapped');
+                      }),
+                      _buildToolIcon(Icons.payment, 'Pay\nBills', () {
+                        print('Pay Rent tapped');
+                      }),
+                      _buildToolIcon(Icons.report, 'Submit a\nReport', () {
+                        print('Submit a Report tapped');
+                      }),
                     ],
-                  )
+                  ),
+
                 ],
               ),
             ),
@@ -171,4 +256,32 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  //
+} Widget _buildToolIcon(IconData icon, String label, VoidCallback onTap) {
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      width: 75,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey, width: 1.0), // Add border
+        borderRadius: BorderRadius.circular(8.0), // Optional: make it rounded
+      ),
+      padding: EdgeInsets.all(8.0), // Add padding inside the border
+      child: Column(
+        children: [
+          Icon(icon, color: Color(0xFF006989), size: 32.0),
+          SizedBox(height: 4.0),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'Poppins',
+              fontSize: 9,),
+          ),
+        ],
+      ),
+    ),
+  );
 }
