@@ -7,8 +7,14 @@ import 'package:untitled/pages/announcements_page.dart';
 import 'package:untitled/pages/chat_page.dart';
 import 'package:untitled/pages/trans_history_page.dart';
 import 'package:untitled/pages/pay_rent_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
