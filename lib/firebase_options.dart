@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'pinesville-f6b24.firebasestorage.app',
     measurementId: 'G-ZS8K39LLKH',
   );
+
 }

@@ -1,12 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+
+  //sign user out method na ilalagay sa user account page
+  void signUserOut(){
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //temporary sign out for testing
+        actions: [
+          IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout))
+        ], //testing nga ha oki
+
         title: const Text('Home',
             style: TextStyle(
               fontSize: 16,

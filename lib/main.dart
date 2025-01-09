@@ -1,13 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/pages/announcements_page.dart';
+import 'package:untitled/pages/auth_page.dart';
+import 'package:untitled/pages/chat_page.dart';
 import 'package:untitled/pages/create_account.dart';
 import 'package:untitled/pages/grp_page.dart';
-import 'package:untitled/pages/login_page.dart';
 import 'package:untitled/pages/home_page.dart';
-import 'package:untitled/pages/announcements_page.dart';
-import 'package:untitled/pages/chat_page.dart';
-import 'package:untitled/pages/trans_history_page.dart';
 import 'package:untitled/pages/pay_rent_page.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:untitled/pages/trans_history_page.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -25,9 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: AuthPage(),
       routes: {
-    '/login_page': (context) => LoginPage(),
+    '/login_page': (context) => AuthPage(),
     '/create_account': (context) => SignUpScreen(),
     '/grp_page': (context) => GrpPage(),
     '/home_page': (context) => HomePage(),

@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatefulWidget{
+class LoginButton extends StatelessWidget{
   void Function()? onTap;
 
   LoginButton({
     super.key,required this.onTap});
 
-  @override
-  State<LoginButton> createState() => _LoginButtonState();
-}
 
-class _LoginButtonState extends State<LoginButton> {
 @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, '/grp_page');
-      },
+      onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(16),
         margin: EdgeInsets.symmetric(horizontal: 40),
