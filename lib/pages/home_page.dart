@@ -5,7 +5,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
 
-  //sign user out method na ilalagay sa user account page
+  //sign user out method na ilalagay sa user account p age
   void signUserOut(){
     FirebaseAuth.instance.signOut();
   }

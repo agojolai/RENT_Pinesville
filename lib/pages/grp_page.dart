@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/pages/announcements_page.dart';
-import 'package:untitled/pages/chat_page.dart';
+import 'package:untitled/pages/ProfilePage.dart';
 import 'package:untitled/pages/home_page.dart';
 
 class GrpPage extends StatefulWidget{
@@ -25,7 +25,7 @@ class _GrpPageState extends State<GrpPage> {
     //announcement_page
     AnnouncementsPage(),
     //chat_page
-    ChatPage(),
+    ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -43,13 +43,13 @@ class _GrpPageState extends State<GrpPage> {
           ),
 
           BottomNavigationBarItem(
-              icon: Icon(Icons.announcement_rounded),
-              label: 'Announcements'
+              icon: Icon(Icons.chat),
+              label: 'Chat Admin'
           ),
 
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat Admin',
+            label: 'Profile',
+            icon: Icon(Icons.person),
 
           ),
         ],
