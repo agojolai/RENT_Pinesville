@@ -113,7 +113,7 @@ class HomePage extends StatelessWidget {
                                   onPressed: () {
                                     // Handle transaction history action
                                     Navigator.pushNamed(
-                                        context, '/trans_history');
+                                        context, '/Billings/submit_bills');
                                   },
                                   style: ElevatedButton.styleFrom(
                                     side: const BorderSide(
