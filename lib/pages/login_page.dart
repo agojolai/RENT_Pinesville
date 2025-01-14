@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/components/buttons.dart';
 import 'package:untitled/components/textFields.dart';
+import 'package:untitled/features/password_configuration/forgot_password.dart';
+
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
@@ -115,15 +117,18 @@ class _LoginPageState extends State<LoginPage> {
 
               const SizedBox(height: 35),
 
-              // forgot password
-              const Text(
-                'Forgot Password?',
+              new GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, '/features/password_configuration');
+                },
+                child: const Text('Forget Password?',
                 style: TextStyle(
                   color: Color(0xFF006989),
                   fontFamily: 'Poppins',
                   fontSize: 12,
-                ),
+                ),),
               ),
+
 
               const SizedBox(height: 35),
 
@@ -157,3 +162,4 @@ class _LoginPageState extends State<LoginPage> {
     ));
   }
 }
+
