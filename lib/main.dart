@@ -6,12 +6,11 @@ import 'package:untitled/Billings/submit_bills.dart';
 import 'package:untitled/Billings/transaction_history.dart';
 import 'package:untitled/Billings/view_bills.dart';
 import 'package:untitled/features/password_configuration/forgot_password.dart';
-import 'package:untitled/pages/announcements_page.dart';
+import 'package:untitled/pages/navigation/ProfilePage.dart';
+import 'package:untitled/pages/navigation/home_page.dart';
 import 'package:untitled/pages/auth_page.dart';
-import 'package:untitled/pages/ProfilePage.dart';
 import 'package:untitled/pages/create_account.dart';
 import 'package:untitled/pages/grp_page.dart';
-import 'package:untitled/pages/home_page.dart';
 import 'package:untitled/pages/pay_rent_page.dart';
 import 'package:untitled/pages/trans_history_page.dart';
 
@@ -38,8 +37,7 @@ class MyApp extends StatelessWidget {
         '/create_account': (context) => SignUpScreen(),
         '/grp_page': (context) => GrpPage(),
         '/home_page': (context) => HomePage(),
-        '/announcements_page': (context) => AnnouncementsPage(),
-        '/chat_page': (context) => ProfilePage(),
+        '/ProfilePage': (context) => ProfilePage(),
         '/pay_rent': (context) => PayRentPage(),
         '/trans_history': (context) => TransHistoryPage(),
         '/features/password_configuration': (context) => forgetPassword(),
