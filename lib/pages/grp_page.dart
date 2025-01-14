@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/pages/announcements_page.dart';
-import 'package:untitled/pages/ProfilePage.dart';
-import 'package:untitled/pages/home_page.dart';
+import 'package:untitled/pages/navigation/chatAdmin_page.dart';
+import 'package:untitled/pages/navigation/ProfilePage.dart';
+import 'package:untitled/pages/navigation/home_page.dart';
 
 class GrpPage extends StatefulWidget{
   GrpPage({super.key});
@@ -23,7 +23,7 @@ class _GrpPageState extends State<GrpPage> {
     //home_page
     HomePage(),
     //announcement_page
-    AnnouncementsPage(),
+    chatAdminPage(),
     //chat_page
     ProfilePage(),
   ];
