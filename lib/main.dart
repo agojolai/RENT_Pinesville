@@ -1,5 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/Billings/pay_bills.dart';
+import 'package:untitled/Billings/submit_report.dart';
+import 'package:untitled/Billings/transaction_history.dart';
+import 'package:untitled/Billings/view_bills.dart';
+import 'package:untitled/features/password_configuration/forgot_password.dart';
 import 'package:untitled/pages/announcements_page.dart';
 import 'package:untitled/pages/auth_page.dart';
 import 'package:untitled/pages/ProfilePage.dart';
@@ -28,14 +33,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: AuthPage(),
       routes: {
-    '/login_page': (context) => AuthPage(),
-    '/create_account': (context) => SignUpScreen(),
-    '/grp_page': (context) => GrpPage(),
-    '/home_page': (context) => HomePage(),
-    '/announcements_page': (context) => AnnouncementsPage(),
-    '/chat_page': (context) => ProfilePage(),
-    '/pay_rent': (context) => PayRentPage(),
-    '/trans_history': (context) => TransHistoryPage(),
+        '/login_page': (context) => AuthPage(),
+        '/create_account': (context) => SignUpScreen(),
+        '/grp_page': (context) => GrpPage(),
+        '/home_page': (context) => HomePage(),
+        '/announcements_page': (context) => AnnouncementsPage(),
+        '/chat_page': (context) => ProfilePage(),
+        '/pay_rent': (context) => PayRentPage(),
+        '/trans_history': (context) => TransHistoryPage(),
+        '/features/password_configuration': (context) => forgetPassword(),
+        '/Billings/view_bills': (context) => viewBills(),
+        '/Billings/transaction_history' : (context) => transactionHistory(),
+        '/Billings/pay_bills' : (context) => payBills(),
+        '/Billings/submit_report' : (context) => submitReport(),
+
     },
     );
   }
