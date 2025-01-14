@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AnnouncementsPage extends StatelessWidget {
-  const AnnouncementsPage({super.key});
+class chatAdminPage extends StatelessWidget {
+  const chatAdminPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
-        title: const Text('Announcement',
+        title: const Text('Chat Admin',
             style: TextStyle(
               fontSize: 12,
               fontFamily: 'Poppins',

@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/pages/announcements_page.dart';
+import 'package:untitled/pages/navigation/chatAdmin_page.dart';
 import 'package:untitled/pages/auth_page.dart';
-import 'package:untitled/pages/ProfilePage.dart';
+import 'package:untitled/pages/navigation/ProfilePage.dart';
 import 'package:untitled/pages/create_account.dart';
 import 'package:untitled/pages/grp_page.dart';
-import 'package:untitled/pages/home_page.dart';
+import 'package:untitled/pages/navigation/home_page.dart';
 import 'package:untitled/pages/pay_rent_page.dart';
 import 'package:untitled/pages/trans_history_page.dart';
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     '/create_account': (context) => SignUpScreen(),
     '/grp_page': (context) => GrpPage(),
     '/home_page': (context) => HomePage(),
-    '/announcements_page': (context) => AnnouncementsPage(),
+    '/chatAdmin_page': (context) => chatAdminPage(),
     '/chat_page': (context) => ProfilePage(),
     '/pay_rent': (context) => PayRentPage(),
     '/trans_history': (context) => TransHistoryPage(),
