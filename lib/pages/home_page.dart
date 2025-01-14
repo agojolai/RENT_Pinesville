@@ -247,16 +247,16 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       _buildToolIcon(Icons.description, 'View\nBills', () {
-                        print('Bill Break Down tapped');
+                        Navigator.pushNamed(context, '/Billings/view_bills');
                       }),
                       _buildToolIcon(Icons.history, 'Transaction\nHistory', () {
-                        print('Transaction History tapped');
+                        Navigator.pushNamed(context, '/Billings/transaction_history');
                       }),
                       _buildToolIcon(Icons.payment, 'Pay\nBills', () {
-                        print('Pay Rent tapped');
+                        Navigator.pushNamed(context, '/Billings/pay_bills');
                       }),
                       _buildToolIcon(Icons.report, 'Submit a\nReport', () {
-                        print('Submit a Report tapped');
+                        Navigator.pushNamed(context, '/Billings/submit_report');
                       }),
                     ],
                   ),
@@ -275,7 +275,8 @@ class HomePage extends StatelessWidget {
   return InkWell(
     onTap: onTap,
     child: Container(
-      width: 75,
+      height: 90,
+      width: 70,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey, width: 1.0), // Add border
         borderRadius: BorderRadius.circular(8.0), // Optional: make it rounded
@@ -291,7 +292,7 @@ class HomePage extends StatelessWidget {
             style: const TextStyle(
               color: Colors.black,
               fontFamily: 'Poppins',
-              fontSize: 9,),
+              fontSize: 8,),
           ),
         ],
       ),
