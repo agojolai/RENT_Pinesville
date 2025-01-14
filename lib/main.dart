@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/Billings/pay_bills.dart';
 import 'package:untitled/Billings/submit_report.dart';
+import 'package:untitled/Billings/submit_bills.dart';
 import 'package:untitled/Billings/transaction_history.dart';
 import 'package:untitled/Billings/view_bills.dart';
 import 'package:untitled/features/password_configuration/forgot_password.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         '/Billings/transaction_history' : (context) => transactionHistory(),
         '/Billings/pay_bills' : (context) => payBills(),
         '/Billings/submit_report' : (context) => submitReport(),
+        '/Billings/submit_bills' : (context) => submitBills(),
 
     },
     );
