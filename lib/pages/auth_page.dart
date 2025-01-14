@@ -18,7 +18,7 @@ class AuthPage extends StatelessWidget {
                 return GrpPage();
                 //is user not logged in
               } else {
-                print("haha bobo"); //test
+                //print("haha bobo"); //test
                 return LoginPage();
               }
             }));

@@ -64,7 +64,7 @@ class payBills extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.asset(
-                        'lib/images/gcash.jpg', // Ensure this path is correct
+                        'assets/images/gcash.jpg', // Ensure this path is correct
                         width: 200,
                         height: 200,
                       ),
@@ -83,7 +83,7 @@ class payBills extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.asset(
-                        'lib/images/seabank.jpg', // Ensure this path is correct
+                        'assets/images/seabank.jpg', // Ensure this path is correct
                         width: 200,
                         height: 200,
                       ),

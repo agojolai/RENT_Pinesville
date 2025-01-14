@@ -1,34 +1,21 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
 
-  //sign user out method na ilalagay sa user account p age
-  void signUserOut(){
-    FirebaseAuth.instance.signOut();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //temporary sign out for testing
-        actions: [
-          IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout))
-        ], //testing nga ha oki
-
         title: const Text('Home',
             style: TextStyle(
               fontSize: 16,
               fontFamily: 'Poppins',
-              fontWeight: FontWeight.bold,
               color: Color(0xFF939393),
             )),
         centerTitle: true,
       ),
-      drawer: Drawer(),
       //body
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -41,9 +28,6 @@ class HomePage extends StatelessWidget {
                 children: [
                   // Main teal container with text
                   Container(
-                    //padding: const EdgeInsets.only(left: 16),
-                    //margin: const EdgeInsets.symmetric(horizontal: 20),
-
                     height: 226, // height of teal container
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -168,7 +152,7 @@ class HomePage extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12.0),
                     child: Image.asset(
-                      'lib/images/IMG.jpg', // Replace with actual image URL
+                      'assets/images/IMG.jpg', // Replace with actual image URL
                       height: 150.0,
                       width: double.infinity,
                       fit: BoxFit.cover,

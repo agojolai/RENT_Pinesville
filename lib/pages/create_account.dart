@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 //TODO KULANG SA EXCEPTIONS
 
 class SignUpScreen extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   final TextEditingController _moveInDateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class SignUpScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Form(
-            key: _formKey,
+            key: formKey,
             child: Column(
               children: [
                 const SizedBox(height: 60),
@@ -228,7 +228,7 @@ class SignUpScreen extends StatelessWidget {
 
                 ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (formKey.currentState!.validate()) {
                       // Process data.
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
