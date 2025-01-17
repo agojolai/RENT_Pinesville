@@ -23,7 +23,7 @@ class _GrpPageState extends State<GrpPage> {
     //home_page
     HomePage(),
     //announcement_page
-    chatAdminPage(),
+    CreateAccountPage(),
     //chat_page
     ProfilePage(),
   ];
