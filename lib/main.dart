@@ -13,7 +13,6 @@ import 'package:untitled/pages/create_account.dart';
 import 'package:untitled/pages/grp_page.dart';
 import 'package:untitled/pages/pay_rent_page.dart';
 import 'package:untitled/pages/trans_history_page.dart';
-
 import 'firebase_options.dart';
 
 void main() async {

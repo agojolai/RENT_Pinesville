@@ -78,7 +78,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        title: Text('Sign Up',
+            style: TextStyle(
+              fontSize: 16,
+              fontFamily: 'Poppins',
+              color: Color(0xFF939393),
+            )),
       ),
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
