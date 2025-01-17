@@ -20,7 +20,7 @@ class submitReport extends StatelessWidget {
         centerTitle: true,
       ),
 
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,8 +97,6 @@ class submitReport extends StatelessWidget {
                           prefixIcon: Icon(Icons.meeting_room_rounded),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
-                              borderSide: BorderSide(
-                                  width: 1, color: Colors.grey)
                           )
                       ),
                     )),
@@ -122,7 +120,7 @@ class submitReport extends StatelessWidget {
                         fontSize: 14,
                       ),),
                     value: _selectedValue,
-                    items: <String>['A', 'B', 'C', 'D'].map((String value) {
+                    items: <String>['Maintenance', 'Security', 'Utilities', 'Others'].map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
@@ -193,7 +191,6 @@ class submitReport extends StatelessWidget {
         ),
 
       ),
-
 
     );
   }

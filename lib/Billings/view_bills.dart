@@ -18,7 +18,7 @@ class viewBills extends StatelessWidget {
         centerTitle: true,
       ),
 
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(25),
       )
 

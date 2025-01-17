@@ -1,7 +1,24 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
-class payBills extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+class payBills extends StatefulWidget {
   const payBills({super.key});
+
+  @override
+  State<payBills> createState() =>  _PayBillsState();
+
+}
+
+class _PayBillsState extends State<payBills> {
+
+  File? _billsImage;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async{
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +43,7 @@ class payBills extends StatelessWidget {
         backgroundColor: Colors.white, // Match background
         iconTheme: const IconThemeData(color: Colors.black), // Back button color
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween, // Adjusts space between elements
@@ -88,36 +105,54 @@ class payBills extends StatelessWidget {
                         height: 200,
                       ),
                       const SizedBox(height: 4),
+
                     ],
                   ),
                 ),
+
+                const SizedBox(height: 20),
+
+                ElevatedButton(
+                  onPressed: () {
+                    // Add functionality for the button here
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF006989), // Button color
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    'Submit Proof of Payment',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ],
+
             ),
             // Proof of Payment Button
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality for the button here
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF006989), // Button color
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: const Text(
-                'Proof of Payment',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+
             const SizedBox(height: 8),
+
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12.0),
+            child: Image.asset(
+              'assets/images/IMG.jpg',
+              height: 250.0,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          )
           ],
         ),
+
+
       ),
     );
   }
