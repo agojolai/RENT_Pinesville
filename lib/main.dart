@@ -19,7 +19,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MyApp());
 }
@@ -42,12 +42,11 @@ class MyApp extends StatelessWidget {
         '/trans_history': (context) => TransHistoryPage(),
         '/features/password_configuration': (context) => forgetPassword(),
         '/Billings/view_bills': (context) => viewBills(),
-        '/Billings/transaction_history' : (context) => transactionHistory(),
-        '/Billings/pay_bills' : (context) => payBills(),
-        '/Billings/submit_report' : (context) => submitReport(),
-        '/Billings/submit_bills' : (context) => submitBills(),
-
-    },
+        '/Billings/transaction_history': (context) => transactionHistory(),
+        '/Billings/pay_bills': (context) => payBills(),
+        '/Billings/submit_report': (context) => submitReport(),
+        '/Billings/submit_bills': (context) => submitBills(),
+      },
     );
   }
 }
