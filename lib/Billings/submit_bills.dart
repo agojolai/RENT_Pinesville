@@ -17,7 +17,7 @@ class submitBills extends StatelessWidget {
       ),
         centerTitle: true,
       ),
-      body: const SafeArea(
+      body: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
