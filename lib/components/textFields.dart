@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget{
-  final controller;
+  final TextEditingController controller;
   final String hintText;
 
 
@@ -41,25 +41,29 @@ class MyTextField extends StatelessWidget{
 }
 
 
-class PasswordTextField extends StatelessWidget {
-  final controller;
+class PasswordTextField extends StatefulWidget {
+  final TextEditingController controller;
   final String hintText;
-  final bool obscureText;
 
   const PasswordTextField({
     super.key,
     required this.controller,
     required this.hintText,
-    required this.obscureText,
   });
 
   @override
+  _PasswordTextFieldState createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<PasswordTextField> {
+  bool _obscureText = true;
+
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
       child: TextField(
-        controller: controller,
-        obscureText: obscureText,
+        controller: widget.controller,
+        obscureText: _obscureText,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
               borderRadius: (BorderRadius.circular(20)),
@@ -72,16 +76,25 @@ class PasswordTextField extends StatelessWidget {
 
           fillColor: const Color(0xFFF6F5F5),
           filled: true,
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: const TextStyle(
             color: Color(0xFF939393),
             fontFamily: 'Poppins',
             fontSize: 16,
           ),
           prefixIcon: const Icon(Icons.lock_open),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _obscureText ? Icons.visibility : Icons.visibility_off,
+            ),
+            onPressed: () {
+              setState(() {
+                _obscureText = !_obscureText;
+              });
+            },
+          ),
         ),
       ),
     );
   }
-
 }

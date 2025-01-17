@@ -15,8 +15,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // text editing controllers
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
+
 
   //log in method
   void logUserIn() async {
@@ -31,37 +31,79 @@ class _LoginPageState extends State<LoginPage> {
 
     //log in //TODO: ISEMPTY OR NULL EXCEPTION
     try {
+
+      if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+        throw Exception('empty-fields');
+      }
+
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text);
+          email: emailController.text,
+          password: passwordController.text);
+
       //pop the loading after logging in
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
+      // Firebase specific error handling
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-        showErrorMessage();
+        showErrorMessage("No user found with that email.");
       } else if (e.code == 'wrong-password') {
-        //print('Wrong password provided for that user.');
-        showErrorMessage();
+        showErrorMessage("Incorrect password. Please try again.");
+      } else if (e.code == 'invalid-email') {
+        showErrorMessage("The email address is not valid.");
+      } else if (e.code == 'user-disabled') {
+        showErrorMessage("This user account has been disabled.");
+      } else if (e.code == 'too-many-requests') {
+        showErrorMessage("Too many attempts. Please try again later.");
+      } else {
+        showErrorMessage("An unexpected error occurred. Please try again.");
+      }
+    } catch (e) {
+      // Handle non-Firebase exceptions like empty fields
+      Navigator.pop(context);
+      if (e.toString() == 'Exception: empty-fields') {
+        showErrorMessage("Email and password cannot be empty.");
+      } else {
+        showErrorMessage("An unexpected error occurred. Please try again.");
       }
     }
   }
 
-  void showErrorMessage() {
+  void showErrorMessage(String message) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-              title: Center(
-                  child: Text(
-            "Invalid Email or Password",
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text(
+            "Login Error",
             style: TextStyle(
-              color: Colors.black,
-              fontFamily: 'Poppins',
-              fontSize: 16,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
-          )));
-        });
+          ),
+          content: Text(
+            message,
+            style: const TextStyle(
+              fontSize: 16,
+              fontFamily: 'Poppins',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text(
+                "OK",
+                style: TextStyle(
+                  color: Color(0xFF006989),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   //create acc method
@@ -106,7 +148,6 @@ class _LoginPageState extends State<LoginPage> {
               PasswordTextField(
                 controller: passwordController,
                 hintText: 'Password',
-                obscureText: true,
               ),
               const SizedBox(height: 20),
 
