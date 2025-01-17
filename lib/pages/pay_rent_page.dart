@@ -34,7 +34,6 @@ class PayRentPage extends StatelessWidget {
                         Text(
                           'COMING SOON',
                         ),
-                        Text('!!!NAME TO BE CHANGED!!!!!'),
                       ],
                     )
                   ],
