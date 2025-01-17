@@ -14,6 +14,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final formKey = GlobalKey<FormState>();
 
+
   // Controllers for input fields
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
@@ -27,8 +28,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // Loading state
+  // Loading state and obscurre
   bool _isLoading = false;
+  bool _isPasswordObscured = true;
 
   // Method to handle user registration
   Future<void> _registerUser() async {
@@ -191,7 +193,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(height: 16),
                       TextFormField(
                         controller: _passwordController,
-                        obscureText: true,
+                        obscureText: _isPasswordObscured,
                         decoration: InputDecoration(
                             labelText: 'Password',
                             labelStyle: TextStyle(
@@ -200,6 +202,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               fontSize: 16,
                             ),
                             prefixIcon: Icon(Icons.lock),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _isPasswordObscured ? Icons.visibility : Icons.visibility_off,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _isPasswordObscured = !_isPasswordObscured;
+                                });
+                              },
+                            ),
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20.0),
                                 borderSide:
