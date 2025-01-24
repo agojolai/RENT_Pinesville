@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:untitled/features/authentication/controllers/login/login_controller.dart';
 import 'package:untitled/features/authentication/screens/signup/signup.dart';
-import 'package:untitled/utils/navigation_menu.dart';
 import 'package:untitled/utils/validators/validations.dart';
-import '../password_configuration/forgot_password.dart';
+import '../forget_password/forgot_password.dart';
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

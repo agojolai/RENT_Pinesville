@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled/features/billings/screens/billing_statement/billing_statement.dart';
 import 'package:untitled/features/billings/screens/submit_pop/sumbitpop.dart';
+
+import '../../../personalization/controllers/user_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -47,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       const SizedBox(height: 25),
                       Text(
-                        '     Hi, !',
+                        '     Hi, ${controller.user.value?.firstName}!',
                         style: const TextStyle(
                           fontFamily: 'Poppins',
                           color: Colors.white,
@@ -116,9 +120,7 @@ class HomeScreen extends StatelessWidget {
                             const SizedBox(width: 10),
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, '/pay_rent');
-                                },
+                            onPressed: () => Get.to(() => BillingStatement()),
                                 style: ElevatedButton.styleFrom(
                                   side: const BorderSide(color: Color(0xFF006989)),
                                   backgroundColor: Colors.white,

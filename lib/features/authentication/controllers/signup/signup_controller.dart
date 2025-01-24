@@ -54,19 +54,19 @@ class SignUpController extends GetxController {
         return;
       }
 
-      // **Form Validation**
-      if (!signupFormKey.currentState!.validate()) {
-        PFullScreenLoader.stopLoading();
-        return;
-      } // Stop execution if validation fails
+        // **Form Validation**
+        if (!signupFormKey.currentState!.validate()) {
+          PFullScreenLoader.stopLoading();
+          return;
+        } // Stop execution if validation fails
 
       print("validated");
       // register user in firebasse auth & save user data
-     final userCredential = await AuthRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim());
+     final userCredentials = await AuthRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim());
       print("authrepopassed");
      //save authenticated user data in firestore
       final newUser = UserModel(
-        id: userCredential.user!.uid,
+        id: userCredentials.user!.uid,
           firstName: firstName.text.trim(),
           lastName: lastName.text.trim(),
           email: email.text.trim(),

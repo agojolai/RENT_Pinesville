@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 import '../../../../data/repository/auth_repository/auth_repo.dart';
 import '../../../../utils/constants/PImages.dart';
 import '../../../../utils/helpers/network_manager.dart';
+import '../../../../utils/navigation_menu.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
 import '../../../../utils/popups/loaders.dart';
 
@@ -15,6 +15,17 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+
+  @override
+  void onInit(){
+    email.text = localStorage.read('email') ;
+    password.text = localStorage.read('password');
+/*
+    email.text = localStorage.read('email') ?? '';
+    password.text = localStorage.read('password') ?? '';
+    */
+ super.onInit();
+  }
 
   //LOG IN function
 
@@ -52,7 +63,8 @@ class LoginController extends GetxController {
       PFullScreenLoader.stopLoading();
       print("stopload");
 
-      AuthRepository.instance.screenRedirect();
+      //AuthRepository.instance.screenRedirect();
+      Get.offAll(() => NavigationMenu());
     } catch (e) {
       PFullScreenLoader.stopLoading();
       PLoaders.errorSnackBar(title: 'Error', message: e.toString());

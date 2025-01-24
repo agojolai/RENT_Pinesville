@@ -17,6 +17,9 @@ class AuthRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+  //get authenticated user data
+  User? get authUser => _auth.currentUser;
+
   void onReady() {
     FlutterNativeSplash.remove();
     screenRedirect();
@@ -77,7 +80,22 @@ class AuthRepository extends GetxController {
     }
   }
 
-//Email auth Forget Password
+// Forget Password
+  Future<void> forgetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw PFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw PFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const PFormatException();
+    } on PlatformException catch (e) {
+      throw PPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
 //log out
   Future<void> logout() async {
