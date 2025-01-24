@@ -7,36 +7,26 @@ import '../../personalization/controllers/user_controller.dart';
 
 
 class ChatController extends GetxController {
-  final usercontroller = Get.put(UserController());
+  final userController = Get.put(UserController());
   final chatRepository = Get.put(ChatRepository());
-  static ChatController get instance => Get.find();
-  RxList<Message> messages = <Message>[].obs;
   final TextEditingController controller = TextEditingController();
 
- // final String currentUserFullName = "John Doe"; // Replace with the user's full name
-  final String recipient = "admin"; // Fixed recipient for admin messages
-
-  @override
-
-  void onInit() {
-    super.onInit();
-    // Subscribe to Firestore messages stream where the recipient is "admin"
-    chatRepository.getMessagesStream(recipient).listen((newMessages) {
-      messages.assignAll(newMessages);
-    });
-  }
+  Stream<List<Message>> get messagesStream =>
+      chatRepository.getMessagesStream("admin");
 
   Future<void> sendMessage() async {
     if (controller.text.trim().isNotEmpty) {
       final message = Message(
         text: controller.text.trim(),
-        sender: usercontroller.user.value!.fullName, // Use the user's full name
+        sender: userController.user.value!.fullName,
+        timestamp: DateTime.now().toString(),
       );
-      await chatRepository.sendMessage(message, recipient);
+      await chatRepository.sendMessage(message, "admin");
       controller.clear();
     }
   }
 }
+
 
 //CHAT REPOSITORY
 
@@ -47,23 +37,18 @@ class ChatRepository extends GetxController {
   Stream<List<Message>> getMessagesStream(String recipient) {
     return _firestore
         .collection('messages')
-        .where('recipient', isEqualTo: recipient) // Filter by recipient
-        .orderBy('timestamp', descending: false) // Order by time
+        .where('recipient', isEqualTo: recipient)
+        .orderBy('timestamp', descending: true)
         .snapshots()
-        .map((snapshot) => snapshot.docs.map((doc) {
-      final data = doc.data();
-      return Message(
-        text: data['text'],
-        sender: data['sender'],
-      );
-    }).toList());
+        .map((snapshot) =>
+        snapshot.docs.map((doc) => Message.fromMap(doc.data())).toList());
   }
 
   Future<void> sendMessage(Message message, String recipient) async {
     await _firestore.collection('messages').add({
       'text': message.text,
       'sender': message.sender,
-      'recipient': recipient, // Store the recipient
+      'recipient': recipient,
       'timestamp': FieldValue.serverTimestamp(),
     });
   }
@@ -74,7 +59,21 @@ class ChatRepository extends GetxController {
 class Message {
   final String text;
   final String sender;
+  final String timestamp; // Add timestamp
 
-  Message({required this.text, required this.sender});
+  Message({
+    required this.text,
+    required this.sender,
+    required this.timestamp,
+  });
+
+  factory Message.fromMap(Map<String, dynamic> data) {
+    return Message(
+      text: data['text'],
+      sender: data['sender'],
+      timestamp: (data['timestamp'] as Timestamp).toDate().toString(),
+    );
+  }
 }
+
 

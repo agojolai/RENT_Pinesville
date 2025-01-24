@@ -6,13 +6,9 @@ class BillingStatement extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Billing Statement'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Implement back button functionality here
-          },
+
         ),
-      ),
+
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),

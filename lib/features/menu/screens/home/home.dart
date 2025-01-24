@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        '  P',
+                        '  P 7, 480',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 36.0,

@@ -6,4 +6,6 @@ flutter_native_splash:
     color: "#FFFFFF"
     image: assets/images/pinesville_logo.png
 
-  web: false
+  web:
+    color: "#FFFFFF"
+    image: assets/images/pinesville_logo.png

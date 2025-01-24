@@ -80,6 +80,7 @@ flutter:
   - assets/images/pinesville_logo.png
   - assets/images/ianimate.gif
   - assets/images/processdata.json
+  - assets/images/default_profile.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

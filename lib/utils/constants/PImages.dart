@@ -7,4 +7,5 @@ class PImages{
   static const String apt = 'assets/images/IMG.jpg';
   static const String docerAnimation = 'assets/images/ianimate.gif';
   static const String processData = 'assets/images/processdata.json';
+  static const String default_profile = 'assets/images/default_profile.png';
 }
