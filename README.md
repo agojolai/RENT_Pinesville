@@ -1,18 +1,48 @@
 # Pinesville Management System -- For Tenants
 
-An app for tenants
+A Tenant App for Pinesville Pasig. 
 
-## Getting Started
+## Features (FOR ANDROID USE ONLY)
 
-This project is a starting point for a Flutter application.
+You can install the apk directly, in the release section 
+  
+The Pinesville Pasig Mobile Application specializes in providing a platform for tenants to interact with admin. The services encompass the following key components:
 
-A few resources to get you started if this is your first Flutter project:
+Tenant Dashboard: The app has a user-friendly dashboard where tenants can easily access their rent and utility bills (both total and breakdown), as well as their transaction history.
 
-- you can install the apk directly, in the release section
-- you can create account, view your account on account page, log in and out, and forget your password.
-- the other functionalities are yet to be implemented
+Announcements: Tenants will receive push notifications for announcements from admins, ensuring timely information about important matters.
+
+Chat & Ticketing System: Tenants can submit a ticket for reports, and communicate directly with the admin for concerns or inquiries. 
+
+## For Cloning the repository:
+
+Install and initialize this following plugins:
+(Find their documentation in their respective websites.)
+
+Firebase
+
+Flutter and Dart SDK
+
+go to pubspec.yaml and run flutter pub get for dependencies
+
+```flutter pub get```
+
+Install SDK Tools:
+
+Android SDK Command-line Tools
+
+Android Emulator
+
+Android SDK Platform-Tools
+
+Google USB Driver
+
+Google Web Driver
 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
+
+
+
