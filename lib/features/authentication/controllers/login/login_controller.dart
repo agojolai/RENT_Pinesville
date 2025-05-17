@@ -45,12 +45,34 @@ class LoginController extends GetxController {
         return;
       }
       print("network");
+
+
       // **Form Validation**
       if (!loginFormKey.currentState!.validate()) {
         PFullScreenLoader.stopLoading();
         return;
       } // Stop execution if validation fails
       print("local");
+
+      final emailInput = email.text.trim();
+
+      // 🔍 Step 1: Check if the email exists in the approved "Users" collection
+      final snapshot = await AuthRepository.instance.firebaseStore
+          .collection('Users')
+          .where('Email', isEqualTo: emailInput)
+          .get();
+
+      if (snapshot.docs.isEmpty) {
+        PFullScreenLoader.stopLoading();
+        PLoaders.errorSnackBar(
+          title: 'Application Pending',
+          message: 'Application under review',
+        );
+        return;
+      }
+
+
+
       //remembering
       localStorage.write('email', email.text.trim());
       localStorage.write('password', password.text.trim());

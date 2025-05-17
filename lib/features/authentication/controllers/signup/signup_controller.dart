@@ -66,7 +66,7 @@ class SignUpController extends GetxController {
       print("authrepopassed");
      //save authenticated user data in firestore
       final newUser = UserModel(
-        id: userCredentials.user!.uid,
+        id: userCredentials.user!.uid,  // gives UID upon registering
           firstName: firstName.text.trim(),
           lastName: lastName.text.trim(),
           email: email.text.trim(),
@@ -76,20 +76,32 @@ class SignUpController extends GetxController {
           profilePic: ''
       );
       print("userpassed");
+/*
+      // save user data in firestore
       final userRepository = Get.put(UserRepository());
-      await userRepository.saveUserRecord(newUser);
+      await userRepository.saveUserRecord(newUser);*/
 
+      final userRepository = Get.put(UserRepository());
+      await userRepository.savePendingUser(newUser);
+      print("user saved");
 
       PFullScreenLoader.stopLoading();
 
       //go back to log in screen
       AuthRepository.instance.logout();
+
       print("back");
 
       print("tanigna");
-      //show success message
-      PLoaders.successSnackBar(title: 'Success!', message: 'Your account has been successfully created. Please log in to continue. ');
-      print("abagna");
+
+      // Show info message
+      PLoaders.successSnackBar(
+        title: 'Application Received',
+        message:
+        'Please wait for an email confirmation before logging in.',);
+        //'You can now log in.',);
+
+      print("application received");
 
     } catch (e) {
       PLoaders.errorSnackBar(title: 'Error', message: e.toString());

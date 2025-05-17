@@ -32,10 +32,63 @@ class UserRepository extends GetxController {
     });
   }
 */
+
+//function to save to pending users in firebase
+  Future<void> savePendingUser(UserModel user) async {
+    try {
+      await _db.collection('pendingTenants')
+          .doc(user.id)
+          .set(user.toJson());
+    } on FirebaseException catch (e) {
+      throw PFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const PFormatException();
+    } on PlatformException catch (e) {
+      throw PPlatformException(e.code).message;
+    } catch (e) {
+      throw Exception('Error saving pending user: $e');
+    }
+  }
+
+  /*
+//function to save to pending users in firebase
+  Future<void> savePendingUser(UserModel user) async {
+    try {
+      final docRef = _db.collection('pendingTenants').doc();
+      final pendingUser = UserModel(
+        id: docRef.id, // inject generated Firestore doc ID
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phoneNo: user.phoneNo,
+        unitNo: user.unitNo,
+        moveInDate: user.moveInDate,
+        profilePic: user.profilePic,
+      );
+
+      final dataToSave = pendingUser.toJson();
+      //dataToSave['id'] = docRef.id; // 👈 manually include the id field
+
+      await docRef.set(dataToSave);
+    } on FirebaseException catch (e) {
+      throw PFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const PFormatException();
+    } on PlatformException catch (e) {
+      throw PPlatformException(e.code).message;
+    } catch (e) {
+      throw Exception('Error saving pending user: $e');
+    }
+  }
+
+*/
+
 //function to save user data to firestore
   Future<void> saveUserRecord(UserModel user) async {
     try {
-      await _db.collection('Users').doc(user.id).set(user.toJson());
+      await _db.collection('Users')
+          .doc(user.id)
+          .set(user.toJson());
     } on FirebaseException catch (e) {
       throw PFirebaseException(e.code).message;
     } on FormatException catch (_) {

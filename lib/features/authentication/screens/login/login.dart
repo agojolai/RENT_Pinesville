@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:untitled/features/authentication/controllers/login/login_controller.dart';
 import 'package:untitled/features/authentication/screens/signup/signup.dart';
 import 'package:untitled/utils/validators/validations.dart';
+import '../../../../data/repository/auth_repository/auth_repo.dart';
 import '../forget_password/forgot_password.dart';
 
 
@@ -106,7 +107,22 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
+
+             // -----------------------DUMMY APPROVE BUTTON------------------------*//*
+              SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () async { // Dummy user email for testing
+                      String email = "luisa@gmail.com";
+                      // Call the dummy approval function
+                      await AuthRepository.instance.approvePendingUser(email);
+                    },
+                    child: Text("DUMMY BUTTON",
+                        style: TextStyle(
+                          color: Colors.white,
+                        )),
+                  )),
             ]),
           )),
         ),
