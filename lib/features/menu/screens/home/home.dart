@@ -1,12 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/features/billings/screens/billing_statement/billing_statement.dart';
 import 'package:untitled/features/billings/screens/submit_pop/sumbitpop.dart';
 
+import '../../../../utils/constants/colors.dart';
 import '../../../personalization/controllers/user_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -174,24 +178,7 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 4.0),
-                    Container(
-                      height: 100,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFF006989)),
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'No Announcements',
-                          style: const TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 14,
-                            color: Color(0xFF006989),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
+                    latestAnnouncement(controller.user.value!.fullName),
 
                     SizedBox(height: 16.0),
                     // TRANSACTION HISTORY SECTIONS
@@ -308,6 +295,115 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+
+  Widget latestAnnouncement(String fullName) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('announcements')
+          .where('recipient', whereIn: ['Everyone', fullName])
+          .orderBy('timestamp', descending: true)
+          .limit(1)
+          .snapshots(),
+
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (snapshot.hasError) {
+          return Container(
+            height: 150.0,
+            width: 400,
+            decoration: BoxDecoration(
+              border: Border.all(color: const Color(0xFF006989)),
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            child: const Center(
+              child: Text(
+                'Error Loading Announcements',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: PColors.Pred,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
+        }
+
+        final docs = snapshot.data?.docs ?? [];
+
+        if (docs.isEmpty) {
+          return Container(
+            height: 150.0,
+            width: 400,
+            decoration: BoxDecoration(
+              border: Border.all(color: const Color(0xFF006989)),
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            child: const Center(
+              child: Text(
+                'No Announcements',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 14,
+                  color: PColors.Pteal,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
+        }
+
+        final data = docs.first.data() as Map<String, dynamic>;
+        final title = data['title'] ?? '';
+        final message = data['message'] ?? '';
+
+        return Container(
+          height: 150.0,
+          width: 400,
+          decoration: BoxDecoration(
+            border: Border.all(color: const Color(0xFF006989)),
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+         // child: Center(
+            child: SingleChildScrollView(
+        child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                     Text(
+                        title,
+                        style: const TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: PColors.Pblack,
+                        ),
+                      ),
+
+                    const SizedBox(height: 10),
+                    Text(
+                      message,
+                      style: const TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 14,
+                        color: PColors.Pblack,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+          ),
+        );
+      },
     );
   }
 

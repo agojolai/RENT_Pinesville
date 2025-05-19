@@ -1,6 +1,5 @@
 /*
 
-TODO STEP 1 CREATE MODEL di ko alam pano to
 
  */
 

@@ -86,7 +86,7 @@ class SubmitProofScreen extends StatelessWidget {
                               'assets/images/seabank.jpg',
                               // Ensure this path is correct
                               width: 500,
-                              height: 500,
+                              height: 300,
                             ),
                           ],
                         ),
@@ -98,14 +98,15 @@ class SubmitProofScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: controller.pickImage,  // Call pickImage method from controller
                   child: Container(
-                    width: 200,
-                    height: 400,
+                    constraints: BoxConstraints(
+                      maxWidth: 200,
+                      maxHeight: 600, // max height limit
+                    ),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Obx(() {
-                      // Use Obx to update UI reactively when billsImage changes
                       return controller.billsImage.value == null
                           ? const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -119,16 +120,21 @@ class SubmitProofScreen extends StatelessWidget {
                           Text(
                             'Tap to upload image',
                             style: TextStyle(
-                                fontFamily: 'Poppins', color: Colors.grey),
-                          )
+                              fontFamily: 'Poppins',
+                              color: Colors.grey,
+                            ),
+                          ),
                         ],
                       )
-                          : Image.file(
-                        controller.billsImage.value!,
-                        fit: BoxFit.contain,
+                          : SingleChildScrollView(
+                        child: Image.file(
+                          controller.billsImage.value!,
+                          fit: BoxFit.contain,
+                        ),
                       );
                     }),
-                  ),
+                  )
+                  ,
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
@@ -138,6 +144,7 @@ class SubmitProofScreen extends StatelessWidget {
                         color: Colors.white,
                       )),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ],

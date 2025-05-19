@@ -17,8 +17,7 @@ class SubmitProofController extends GetxController {
     if (pickedFile != null) {
       billsImage.value = File(pickedFile.path);  // Update the image
     }
-  }
-
+ }
   // Upload image to Firebase Storage
   Future<void> uploadImage() async {
     if (billsImage.value == null) {
